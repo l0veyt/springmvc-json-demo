@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>测试页面</title>
+    <!-- 不能简写为闭合标签 -->
+    <script src="/js/jquery.min.js"></script>
+    <script>
+        /**
+         * 发送JSON请求数据
+         */
+        function requestJson() {
+            $.ajax({
+                type:'post',
+                url:'/user/requestJson',
+                contentType:'application/json;charset=utf-8',         // json格式数据请求头
+                data:'{"username":"张三", "password":"23"}',          // json格式的数据
+                success:function(responseData) {
+                    alert(responseData);
+                }
+            });
+        }
+
+        /**
+         * 发送KeyValue请求数据
+         */
+        function requestKeyValue() {
+            $.ajax({
+                type:'post',
+                url:'/user/requestKeyValue',
+                data:'username=张三&password=23',                     // keyvalue格式的数据
+                success:function(responseData) {
+                    alert(responseData);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <input type="button" onclick="requestJson()" value="发送JSON请求数据"/><br/>
+    <input type="button" onclick="requestKeyValue()" value="发送KeyValue请求数据"/>
+</body>
+</html>
